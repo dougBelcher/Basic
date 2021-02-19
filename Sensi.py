@@ -26,7 +26,6 @@ file1.write('Select mdsn as "Serial Nbr"'
             '\n\twhere mdsn in (')
 
 Sensi['SN'] = Sensi.Serial_Numbers.astype("string").str.split(pat="-")
-
 for serial in Sensi.SN:
     if a == 0:
         a = 1
