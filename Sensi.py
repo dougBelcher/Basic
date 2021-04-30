@@ -9,11 +9,17 @@ import pandas as pd
 
 # Sensi = pd.read_excel('PICK 08867794(0).xlsx')
 # Sensi = pd.read_excel('PICK 08883595(1).xlsx')
-Sensi = pd.read_excel('Pick 08889293(1).xlsx')
+# Sensi = pd.read_excel('Pick 08889293(1).xlsx')
 # Sensi = pd.read_excel('Pick 08894324(0).xlsx')
+# Sensi = pd.read_excel('08243092(0).xlsx')
+# Sensi = pd.read_excel('08976988(0).xlsx')
+# Sensi = pd.read_excel('08982539(0).xlsx')
+# Sensi = pd.read_excel('08987717(0).xlsx')
+Sensi = pd.read_excel('08987716(0).xlsx')
 
 # Open the SQL text file
 file1 = open("Sensi.sql", "w+")
+file2 = open("Exist Sensi.txt", "w+")
 a = 0
 
 # Start writing SQL statements to file
@@ -34,6 +40,7 @@ for serial in Sensi.SN:
     for nbr in serial:
         file1.write("\'" + nbr.upper() + "\'")
         file1.write(", ")
+        file2.write(nbr.upper() + "\n")
     a = 0
     file1.write("\n\t")
 
@@ -43,3 +50,4 @@ file1.write("\n\tand not exists(select 1 from wrddta/f5842007 b where a.mdsn=b.a
 file1.write("\n\tand mdsn<>' '")
 
 file1.close()
+file2.close()
