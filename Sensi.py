@@ -7,15 +7,7 @@
 
 import pandas as pd
 
-# Sensi = pd.read_excel('PICK 08867794(0).xlsx')
-# Sensi = pd.read_excel('PICK 08883595(1).xlsx')
-# Sensi = pd.read_excel('Pick 08889293(1).xlsx')
-# Sensi = pd.read_excel('Pick 08894324(0).xlsx')
-# Sensi = pd.read_excel('08243092(0).xlsx')
-# Sensi = pd.read_excel('08976988(0).xlsx')
-# Sensi = pd.read_excel('08982539(0).xlsx')
-# Sensi = pd.read_excel('08987717(0).xlsx')
-Sensi = pd.read_excel('08987716(0).xlsx')
+Sensi = pd.read_excel('09019948(0).xlsx')
 
 # Open the SQL text file
 file1 = open("Sensi.sql", "w+")
@@ -30,7 +22,7 @@ file1.write('Select mdsn as "Serial Nbr"'
             ',TIME(SUBSTR(RIGHT(\'0\' || mdtday, 6), 1, 2) || \':\' || SUBSTR(RIGHT(mdtday, 4), 1, 2) || \':\' ||'
             'RIGHT(mdtday, 2)) AS "Upd Time"\n\tfrom wrddta/f5543203 a'
             '\n\twhere mdsn in (')
-
+#             df    col            change type          split on dash (-)
 Sensi['SN'] = Sensi.Serial_Numbers.astype("string").str.split(pat="-")
 for serial in Sensi.SN:
     if a == 0:
