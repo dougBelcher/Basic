@@ -11,7 +11,7 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
-import sys
+# import sys
 
 system = input("System: ")
 UID = input("UID: ")
@@ -27,7 +27,7 @@ Base = declarative_base()
 
 # defining the User object mapping
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = 'usersx'
     id = Column(Integer, primary_key=True)
     name = Column(String(50))
     fullname = Column(String(50))
@@ -41,7 +41,7 @@ class User(Base):
 # create the mapping
 Base.metadata.create_all(engine)
 
-sys.exit()
+# sys.exit()
 
 # set up session to create Users
 Session = sessionmaker(bind=engine)

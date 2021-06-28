@@ -8,8 +8,8 @@ os.chdir('C:\\Users\\WRA1523\\Dropbox\\Yellow Folders\\Python')
 
 dotenv = DotEnv()
 
-# print(f"{dotenv.has('ibm_profile')}")
-# sys.exit()
+print(f"{dotenv.has('ibm_profile')}")
+sys.exit()
 
 engine = sa.create_engine("ibmi://ibm_profile:ibm_password@WRSERV/rdbname[S785b980]")
 # engine = sa.create_engine("db2+ibm_db://user:pass@/database")
