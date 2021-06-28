@@ -19,26 +19,28 @@ PWD = input("PWD: ")
 extra = input("Add opts: ")
 
 conn_string = "ibmi://{}:{}@{}/?{}".format(system, UID, PWD, extra)
+# conn_string = "ibmi://{user}:{password}@{host}/?{rdbname}".format(system, UID, PWD, extra)
+# engine = create_engine("ibmi://user:password@host/rdbname[?key=value&key=value...]")
+# conn_string = "ibmi://{}:{}@{}/?{}".format(UID, PWD, system, extra)
 
 engine = sa.create_engine(conn_string, echo=True)
 
 # Creating Tables
 print("Creating Tables")
 metadata = MetaData()
-users = Table('users', metadata,
+usersx = Table('usersx', metadata,
               Column('id', Integer, primary_key=True),
               Column('name', String(50)),
               Column('fullname', String(50)),
               )
 
-addresses = Table('addresses', metadata,
+addressesx = Table('addressesx', metadata,
                   Column('id', Integer, primary_key=True),
                   Column('user_id', None, ForeignKey('users.id')),
                   Column('email_address', String(50), nullable=False),
                   )
-print(f'{users}')
 
-# metadata.create_all(engine)
+metadata.create_all(engine)
 
 sys.exit()
 

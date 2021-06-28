@@ -267,6 +267,7 @@ Backup of *.doc*
 
 # Excel temporary
 ~$*.xls*
+*.xlsx
 
 # Excel Backup File
 *.xlk
