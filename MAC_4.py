@@ -2,17 +2,17 @@
 import os
 import sys
 import pandas as pd
-from dotenv import DotEnv
+# from dotenv import DotEnv
 import sqlite3
 from pprint import pprint
 
-os.chdir('C:\\Users\\WRA1523\\Dropbox\\Yellow Folders\\Python')           # work
+# os.chdir('C:\\Users\\WRA1523\\Dropbox\\Yellow Folders\\Python')           # work
 # os.chdir('C:\\Users\\Doug\\Documents\\Dropbox\\Yellow Folders\\Python')   # home PC
-# os.chdir('/home/doug/Dropbox/Yellow Folders/Python')                        # ubuntu
+os.chdir('/home/doug/Dropbox/Yellow Folders/Python')                        # ubuntu
 
-dotenv = DotEnv()
+# dotenv = DotEnv()
 
-os.chdir('\\Users\\WRA1523\\')                                              # work
+# os.chdir('\\Users\\WRA1523\\')                                              # work
 # os.chdir('/home/doug/Dropbox/Doug')                                         # ubuntu
 # os.chdir('C:\\Users\\Doug\\Documents')                                      # home PC
 
@@ -35,11 +35,12 @@ c.execute("""DELETE FROM MAC""")
 
 conn.commit()
 
-os.chdir('//wrprod/wrdsup/supdata')                                         # work
+# os.chdir('//wrprod/wrdsup/supdata')                                         # work
 # os.chdir('//wrprod/wrdsup/supdata')                                         # ubuntu
 # os.chdir('//wrprod/wrdsup/supdata')                                         # home PC
 
-directory = os.path.join('//wrprod/wrdsup/supdata')
+# directory = os.path.join('//wrprod/wrdsup/supdata')                          # work
+directory = os.path.join('/home/doug/Dropbox/Yellow Folders/Python/WR')        # ubuntu
 for root, dirs, files in os.walk(directory):
     for file in files:
         if file.endswith(".csv"):
@@ -49,7 +50,7 @@ for root, dirs, files in os.walk(directory):
                 if df.size > 0:
                     # c.execute("INSERT INTO customers VALUES('John', 'Elder', 'john@codemy.com')")
                     # print(f'{df.head()}')
-                    df.to_sql('MAC', c, index=False, if_exists='append')
+                    df.to_sql('MAC', c, index=False, if_exists='append', method='multi')
                 else:
                     print(f"Empty Data File: {file}")
                 f.close()
@@ -57,6 +58,13 @@ for root, dirs, files in os.walk(directory):
                 print(f'{df.head}')
             except:
                 print(f"Can't access file : {file}")
+                # Query the Database
+                c.execute("SELECT * FROM MAC")
+
+                item = c.fetchall()
+                for items in item:
+                    print(f'{items}')
+
 
 # Query the Database
 # c.execute("SELECT rowid, * FROM MAC")
@@ -65,4 +73,4 @@ for root, dirs, files in os.walk(directory):
 
 # sys.exit()
 print('done')
-file1.close()
+# file1.close
