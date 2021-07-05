@@ -1,12 +1,12 @@
 #   This script is intended to read a directory of .csv files and output a file on the IBM i
 #   Purpose is to accumulate a series of Sensi uploads from the supplier and output a MAC ID file
 
-#   TODO - Add SQLite output to this
+#   TODO - Add SQLite output to this *edit* change to csvs-to-sqlite
 import os
 import pandas as pd
 from datetime import datetime
 
-print (f'start: {datetime.now()}')
+print(f'start: {datetime.now()}')
 os.chdir('\\Users\\WRA1523\\')
 MAC_file = open("MACSensi.csv", "w+")
 hdr_parm = True
@@ -23,11 +23,11 @@ for root, dirs, files in os.walk(directory):
                     df["file_name"] = file
                     if hdr_parm:
                         df.to_csv(MAC_file, index=False, header=hdr_parm, line_terminator='\n',
-                                  columns='MACaddress,SerialNumber,BuildDate,TestDate, file_name')
+                                  columns='MACaddress, SerialNumber, BuildDate, TestDate, file_name')
                         hdr_parm = False
                     else:
                         df.to_csv(MAC_file, index=False, header=hdr_parm, line_terminator='\n',
-                                  columns='MACaddress,SerialNumber,BuildDate,TestDate, file_name')
+                                  columns='MACaddress, SerialNumber, BuildDate, TestDate, file_name')
                 else:
                     print(f"Empty Data File: {file}")
                 f.close()
