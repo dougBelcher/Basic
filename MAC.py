@@ -22,10 +22,12 @@ for root, dirs, files in os.walk(directory):
                 if df.size > 0:
                     df["file_name"] = file
                     if hdr_parm:
-                        df.to_csv(MAC_file, index=False, header=hdr_parm, line_terminator='\n')
+                        df.to_csv(MAC_file, index=False, header=hdr_parm, line_terminator='\n',
+                                  columns='MACaddress,SerialNumber,BuildDate,TestDate, file_name')
                         hdr_parm = False
                     else:
-                        df.to_csv(MAC_file, index=False, header=hdr_parm, line_terminator='\n')
+                        df.to_csv(MAC_file, index=False, header=hdr_parm, line_terminator='\n',
+                                  columns='MACaddress,SerialNumber,BuildDate,TestDate, file_name')
                 else:
                     print(f"Empty Data File: {file}")
                 f.close()
